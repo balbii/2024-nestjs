@@ -1,0 +1,14 @@
+# root
+GET http://localhost:3000/
+
+#tarefas
+GET http://localhost:3000/tarefas/
+
+#criar tarefa 
+POST http://localhost:3000/tarefas/
+content-type: application/json
+
+{
+    "titulo": "oiii",
+    "concluido": true
+}
