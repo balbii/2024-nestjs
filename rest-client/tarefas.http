@@ -1,0 +1,36 @@
+### GET recupera todas as tarefas
+GET http://localhost:3000/tarefas/
+
+### GET recupera a tarefa de id 1
+GET http://localhost:3000/tarefas/1
+
+### POST criar uma tarefa com todos os dados
+POST http://localhost:3000/tarefas/
+content-type: application/json
+
+{
+  "titulo": "uma tarefa nova",
+  "descricao": "descrição da nova tarefa",
+  "concluido": false
+}
+
+### POST criar uma tarefa apenas com título
+POST http://localhost:3000/tarefas/
+content-type: application/json
+
+{
+  "titulo": "uma tarefa nova"
+}
+
+### DELETE apaga a tarefa de id 1
+DELETE http://localhost:3000/tarefas/1
+
+### PATCH atualiza a tarefa de id 1
+PATCH http://localhost:3000/tarefas/1
+content-type: application/json
+
+{
+  "titulo": "título modificado",
+  "descricao": "uma descrição da tarefa",
+  "concluido": true
+}
