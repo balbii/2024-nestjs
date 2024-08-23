@@ -2,22 +2,32 @@ import { Injectable } from '@nestjs/common';
 import { CreateTarefaDto } from './dto/create-tarefa.dto';
 import { UpdateTarefaDto } from './dto/update-tarefa.dto';
 import { TarefaEntity } from './entities/tarefa.entity';
+import { PersistenciaService } from 'src/persistencia/persistencia.service';
 
 @Injectable()
 export class TarefasService {
   tarefas: TarefaEntity[] = [];
   contador: number = 0;
+  
+  constructor(private persistencia:PersistenciaService) {}
 
-  create(createTarefaDto: CreateTarefaDto) {
-    const tarefa = {
-      id: this.contador + 1,
-      ...createTarefaDto,
-    };
-    this.contador += 1;
-    this.tarefas.push(tarefa);
+  async create(createTarefaDto: CreateTarefaDto) {
+    // const tarefa = {
+    //   id: this.contador + 1,
+    //   ...createTarefaDto,
+    // };
+    // this.contador += 1;
+    // this.tarefas.push(tarefa);
+    // return {
+    //   estado: 'ok',
+    //   dados: tarefa,
+    // };
+    const tarefa =  await this.persistencia.tarefa.create({
+      data: createTarefaDto
+    });
     return {
       estado: 'ok',
-      dados: tarefa,
+      dados: tarefa
     };
   }
 
